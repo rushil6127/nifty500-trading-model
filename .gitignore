@@ -1,0 +1,27 @@
+# Data
+data/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Outputs
+outputs/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store

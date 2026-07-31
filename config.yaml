@@ -1,0 +1,49 @@
+# ─────────────────────────────────────────────
+#  Nifty 500 Candlestick ML Trading Model Config
+# ─────────────────────────────────────────────
+
+data:
+  universe: NIFTY500
+  lookback_years: 2
+  train_split_months: 18
+  test_split_months: 6
+  raw_dir: data/raw
+  processed_dir: data/processed
+  features_dir: data/features
+
+filters:
+  min_pattern_occurrences: 50
+  min_volume_ratio: 1.2          # Min volume vs 20-day average to confirm signal
+  min_candle_range_pct: 1.0      # Minimum candle body range (%)
+  max_candle_range_pct: 10.0     # Maximum candle body range (%)
+
+indicators:
+  atr_period: 14
+  rsi_period: 14
+  ema_periods: [20, 50, 200]
+  bb_period: 20
+  bb_std: 2
+  macd_fast: 12
+  macd_slow: 26
+  macd_signal: 9
+  adx_period: 14
+
+model:
+  confidence_threshold: 0.65
+  cv_folds: 5
+  random_state: 42
+  n_estimators: 500
+  early_stopping_rounds: 50
+  eval_metric: auc
+
+signals:
+  hold_period_days: 5            # Forward-looking window for label generation
+  take_profit_pct: 3.0
+  stop_loss_pct: 1.5
+  risk_reward_ratio: 2.0
+
+output:
+  reports_dir: outputs/reports
+  model_dir: outputs/models
+  plots_dir: outputs/plots
+  log_level: INFO
